@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<h1 class = "display-4">{{ page }} Rankings</h1>
+<h2>Weekday</h2>
+<table class="table table-hover table-striped">
+    <thead class='thead-dark'>
+        <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">{{ page }}</th> 
+            <th scope="col">
+                Number of users
+                {% if rankings_weekday[0][2] %}
+                    (board)
+                {% endif %}
+            </th>
+            {% if rankings_weekday[0][2] %}
+            <th scope="col">
+                Number of users (alight)
+            </th>
+            {% endif %}
+        </tr> 
+    </thead>
+    <tbody>
+    {% for rank in rankings_weekday %}
+        <tr>
+            <td>
+                {{ rankings_weekday.index(rank)+1 }}
+            </td>
+            <td>
+                {{ rank[0] }}
+            </td> 
+            <td>
+                {{ rank[1] }}
+            </td>
+            {% if rank[2] %}
+            <td>
+                {{ rank[2]}}
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br />
+
+<h2>Weekend</h2>
+<table class="table table-hover table-striped">
+    <thead class='thead-dark'>
+        <tr>
+            <th>Rank</th>
+            <th>{{ page }}</th> 
+            <th scope="col">
+                    Number of users
+                    {% if rankings_weekday[0][2] %}
+                        (board)
+                    {% endif %}
+                </th>
+                {% if rankings_weekday[0][2] %}
+                <th scope="col">
+                    Number of users (alight)
+                </th>
+                {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for rank in rankings_weekend %}
+        <tr>
+            <td>
+                {{ rankings_weekend.index(rank)+1 }}
+            </td>
+            <td>
+                {{ rank[0] }}
+            </td> 
+            <td>
+                {{ rank[1] }}
+            </td>
+            {% if rank[2] %}
+            <td>
+                {{ rank[2]}}
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
